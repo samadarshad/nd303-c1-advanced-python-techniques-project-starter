@@ -48,6 +48,7 @@ class NEODatabase:
             approach.neo = self._neos_by_designation[approach._designation]
             self._neos_by_designation[approach._designation].approaches.append(approach)
 
+        print()
         # TODO: What additional auxiliary data structures will be useful?
 
         # TODO: Link together the NEOs and their close approaches.
@@ -101,4 +102,5 @@ class NEODatabase:
         """
         # TODO: Generate `CloseApproach` objects that match all of the filters.
         for approach in self._approaches:
-            yield approach
+            if all(map(lambda f: f(approach), filters)):
+                yield approach

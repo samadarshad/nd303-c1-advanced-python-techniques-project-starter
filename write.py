@@ -44,4 +44,4 @@ def write_to_json(results, filename):
     """
     with open(filename, 'w') as outfile:
         serialized_results = list(map(lambda r: r.serialize() | {'neo': r.neo.serialize()}, results))
-        json.dump(serialized_results, outfile)
+        json.dump(serialized_results, outfile, indent=2)

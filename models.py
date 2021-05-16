@@ -32,6 +32,7 @@ class NearEarthObject:
     initialized to an empty collection, but eventually populated in the
     `NEODatabase` constructor.
     """
+
     def __init__(self, **info):
         """Create a new `NearEarthObject`.
 
@@ -62,6 +63,11 @@ class NearEarthObject:
                 f"diameter={self.diameter:.3f}, hazardous={self.hazardous!r})")
 
     def serialize(self):
+        """
+        Serialize for writing to CSV or JSON file.
+
+        :return: dict
+        """
         return {
             'designation': self.designation,
             'name': self.name,
@@ -124,6 +130,11 @@ class CloseApproach:
                 f"velocity={self.velocity:.2f}, neo={self.neo!r})")
 
     def serialize(self):
+        """
+        Serialize for writing to CSV or JSON file.
+
+        :return: dict
+        """
         return {
             'datetime_utc': self.time_str,
             'distance_au': self.distance,

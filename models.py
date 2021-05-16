@@ -32,18 +32,11 @@ class NearEarthObject:
     initialized to an empty collection, but eventually populated in the
     `NEODatabase` constructor.
     """
-    # TODO: How can you, and should you, change the arguments to this constructor?
-    # If you make changes, be sure to update the comments in this file.
     def __init__(self, **info):
         """Create a new `NearEarthObject`.
 
         :param info: A dictionary of excess keyword arguments supplied to the constructor.
         """
-        # TODO: Assign information from the arguments passed to the constructor
-        # onto attributes named `designation`, `name`, `diameter`, and `hazardous`.
-        # You should coerce these values to their appropriate data type and
-        # handle any edge cases, such as a empty name being represented by `None`
-        # and a missing diameter being represented by `float('nan')`.
         self.designation = info['pdes']
         self.name = None if info['name'] == '' else info['name']
         self.diameter = float('nan') if info['diameter'] == '' else float(info['diameter'])
@@ -76,6 +69,7 @@ class NearEarthObject:
             'potentially_hazardous': self.hazardous
         }
 
+
 class CloseApproach:
     """A close approach to Earth by an NEO.
 
@@ -89,15 +83,12 @@ class CloseApproach:
     private attribute, but the referenced NEO is eventually replaced in the
     `NEODatabase` constructor.
     """
-    # If you make changes, be sure to update the comments in this file.
+
     def __init__(self, **info):
         """Create a new `CloseApproach`.
 
         :param info: A dictionary of excess keyword arguments supplied to the constructor.
         """
-        # onto attributes named `_designation`, `time`, `distance`, and `velocity`.
-        # You should coerce these values to their appropriate data type and handle any edge cases.
-        # The `cd_to_datetime` function will be useful.
         self._designation = info['des']
         self.time = cd_to_datetime(info['cd'])
         self.distance = float(info['dist'])
@@ -105,8 +96,6 @@ class CloseApproach:
 
         # Create an attribute for the referenced NEO, originally None.
         self.neo = None
-        # self.neo = NearEarthObject(designation="abc", name="aaaa", diameter="213", hazardous="Y")
-
 
     @property
     def time_str(self):
